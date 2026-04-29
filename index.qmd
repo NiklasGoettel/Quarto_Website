@@ -1,0 +1,68 @@
+---
+title: "IOSW-Project"
+---
+
+Welcome to the project page of the IOSW 2026! 
+
+This self-built website should provide you with all the necessary information in context of the IOSW projects, as well a general informations in terms of the schedule. You will also find the templates for you learning journal, as well as all slides from the keynote speakers here.
+
+# The Project 
+
+The idea of these projects is to give you a more tangible feeling to actually working on a topic related to sustainabilty. Of course the world is more complex than we could ever represent in should a small format. Thus, we think it will help you to gain some skills in handling such complex topics, widen your horizon and hand over a basic skill set, you can benefit from and further build on.
+
+
+
+
+The website provides you with the following content:
+
+
+
+
+1. **Projects**
+- The python Project and the Project 2 informations 
+
+2. **Data**
+- Provides you with the data for the python project, in case you want to run it on your own private device. 
+
+3. **General Information** 
+
+- Information on the schedule of the IOSW
+
+4. **Templates**
+
+- Here you will find the Learning-Jorunal-Template 
+
+5. **Files**
+
+- If possible we will provide you here with the slides of the keynote speakers and further lecture slides. 
+
+You can see the orange header at the top of the homepage. Here we will post important news and informations during the week.
+
+
+In case of any further questions, please feel free to contact me: niklasgoettel@uni.hamburg.de
+
+
+
+# Schedule 1 - Python Project
+
+09-10am.(CEST): Python Introduction with Niklas 
+
+10:15am.-12:00am (CEST): Case Study with Niklas 
+
+# Schedule 2 
+
+09-10am.(CEST) : Reading + Brainstorming
+
+10:15am. - 12:00:(CEST) Pitch Idea and preparing Presentation
+
+
+
+
+
+
+
+
+
+
+
+

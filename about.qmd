@@ -1,0 +1,10 @@
+---
+title: "Niklas Goettel"
+about:
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: github
+---
+
+This page is made for teaching purpose only. 

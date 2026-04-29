@@ -1,0 +1,57 @@
+project:
+  type: website
+  resources:
+    -"*.csv"
+    - international-aviation_emissions_sources_v5_5_0.csv
+    - international-shipping_emissions_sources_v5_5_0.csv
+
+website:
+  title: "IOSW project"
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "+++ Deadline for the handover is the 10. Oktober  +++"
+    position: below-navbar
+    type: warning
+  navbar:
+    backround: true
+    search: true
+
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Projects
+        menu:
+            - href: Analysis.ipynb
+              text: Python Project
+            - text: Python Basics
+              href: python_beginner_tutorial.ipynb
+      - text: Data
+        menu: 
+            - href: international-aviation_emissions_sources_v5_5_0.csv
+              text: Aviation Data
+            - href: international-shipping_emissions_sources_v5_5_0.csv
+              text: Shipping Data
+      - href: about.qmd
+        text: About
+      - href: general.qmd 
+        text: General Informations
+      - text: Templates
+        menu:
+            - href: IOSW_Learning_Journal_Template.docx
+              text: Learning Journal Template 
+      - text: Files 
+        menu: 
+            - href: praesi.pptx
+              text: Kick-off-Presenation 
+            - text: Keynotes 
+      
+      
+
+format:
+  html:
+    theme:
+      - minty
+      - brand
+    css: styles.css
+    toc: true

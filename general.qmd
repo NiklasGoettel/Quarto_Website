@@ -1,0 +1,11 @@
+# Schedule 
+
+Example schedules for international students (Mo-Fr):
+
+9 a.m. - 16 p.m. UTC +2 (MECT). 
+
+15 p.m. - 22 p.m. UTC +8 (CST). 
+
+8 a.m. - 15 p.m. UTC -3 (BRT). 
+
+![Schedule](Bildschirmfoto 2026-04-28 um 11.59.45.png)

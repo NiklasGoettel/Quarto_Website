@@ -1,0 +1,29 @@
+digraph {
+	node [shape=box]
+	0 [label="i tasks"]
+	A [label=CPM]
+	B [label="i Beta Distributions (for i in n tasks)"]
+	C [label="estimate Best Task A"]
+	D [label="estimate Worst Task A"]
+	E [label="estimate Best Task B"]
+	F [label="estimate Worst Task B"]
+	G [label="single duration estimate for task A"]
+	H [label="single duration estimate for task B"]
+	I [label=CPM]
+	J [label="project completion time duration (PCTD)"]
+	K [label="Probabilities for project deviation"]
+	A -> 0
+	0 -> B
+	B -> C
+	B -> D
+	B -> E
+	B -> F
+	C -> G
+	D -> G
+	E -> H
+	F -> H
+	G -> I
+	H -> I
+	I -> J
+	J -> K
+}
