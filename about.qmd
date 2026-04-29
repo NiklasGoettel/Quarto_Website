@@ -5,6 +5,8 @@ about:
   image: profile.jpg
   links:
     - icon: github
+      text: GitHub 
+      href: https://github.com/NiklasGoettel
 ---
 
 This page is made for teaching purpose only. 

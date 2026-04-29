@@ -20,12 +20,17 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: python_installation.qmd
+        text: Install Python 
       - text: Projects
         menu:
             - href: Analysis.ipynb
               text: Python Project
             - text: Python Basics
               href: python_beginner_tutorial.ipynb
+            - href: Workflow.qmd
+              text: Analysis Workflow
+              
       - text: Data
         menu: 
             - href: international-aviation_emissions_sources_v5_5_0.csv

@@ -1,5 +1,4 @@
 digraph {
-	node [fillcolor=lightgrey shape=box style="rounded,filled"]
 	A [label="Data Input (Data Loading)"]
 	B [label="Data Cleaning"]
 	C [label="Data Manipulation & Imputation"]

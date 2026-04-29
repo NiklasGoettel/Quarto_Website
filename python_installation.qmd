@@ -1,0 +1,208 @@
+
+# Installation Guide: Python, Visual Studio Code & Jupyter Notebook
+
+This guide walks you through setting up Python, Visual Studio Code, and Jupyter Notebook on **Windows** and **Mac**.
+
+---
+
+## 1. Install Python
+
+### 🔹 Windows
+
+1. Go to the official website:
+   https://www.python.org/downloads/
+
+2. Download the latest stable version (recommended: Python 3.11 or 3.12)
+
+3. Run the installer
+   ⚠️ **Important:** Check
+   ✔️ *“Add Python to PATH”*
+
+4. Click *Install Now*
+
+---
+
+### 🔹 Mac
+
+#### Option A (recommended – using Homebrew)
+
+1. Install Homebrew (if not installed):
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. Install Python:
+
+```bash
+brew install python@3.11
+```
+
+---
+
+#### Option B (direct download)
+
+1. Visit:
+   https://www.python.org/downloads/mac-osx/
+
+2. Download and install Python
+
+---
+
+### ✅ Test Python installation
+
+Open Terminal (Mac) or Command Prompt (Windows):
+
+```bash
+python --version
+```
+
+Expected output:
+
+```
+Python 3.x.x
+```
+
+---
+
+## 2. Install Visual Studio Code
+
+1. Go to:
+   https://code.visualstudio.com/
+
+2. Download and install Visual Studio Code
+
+3. Launch VS Code
+
+---
+
+## 3. Install Python Extension in VS Code
+
+1. Open VS Code
+2. Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`)
+3. Search for **Python**
+4. Install the extension by Microsoft
+
+---
+
+## 4. Install Jupyter Notebook
+
+Open Terminal / Command Prompt:
+
+```bash
+pip install jupyter
+```
+
+---
+
+## 5. (Recommended) Create a Virtual Environment
+
+### 🔹 Create environment
+
+```bash
+python -m venv .venv
+```
+
+---
+
+### 🔹 Activate environment
+
+#### Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+#### Mac:
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+### 🔹 Install required packages
+
+```bash
+pip install jupyter ipykernel
+```
+
+---
+
+## 6. Connect VS Code to Python Environment
+
+1. Open your project folder in VS Code
+2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+3. Search for: **Python: Select Interpreter**
+4. Select your `.venv` environment
+
+---
+
+## 7. Create and Run a Jupyter Notebook
+
+### Option A: Inside VS Code
+
+1. Create a new file:
+   `test.ipynb`
+
+2. Add code:
+
+```python
+print("Hello World")
+```
+
+3. Click **Run**
+
+---
+
+### Option B: In your browser
+
+```bash
+jupyter notebook
+```
+
+This will open a browser window automatically.
+
+---
+
+## 8. Verify Installation
+
+Run this in a notebook or Python file:
+
+```python
+import sys
+print(sys.version)
+```
+
+---
+
+## 🎯 Summary
+
+After completing this setup, you will have:
+
+* Python installed
+* Visual Studio Code configured
+* Jupyter Notebook running
+* A working development environment
+
+---
+
+## ⚠️ Common Issues
+
+* Python not recognized → reinstall and check “Add to PATH”
+* Jupyter not found → run `pip install jupyter`
+* Wrong Python interpreter → select correct one in VS Code
+
+---
+
+## 🚀 Next Steps
+
+Install useful packages:
+
+```bash
+pip install pandas matplotlib numpy
+```
+
+Start building your own projects and explore data analysis workflows.
+
+---

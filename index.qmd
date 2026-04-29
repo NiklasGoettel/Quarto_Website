@@ -6,7 +6,7 @@ Welcome to the project page of the IOSW 2026!
 
 This self-built website should provide you with all the necessary information in context of the IOSW projects, as well a general informations in terms of the schedule. You will also find the templates for you learning journal, as well as all slides from the keynote speakers here.
 
-# The Project 
+## The Project 
 
 The idea of these projects is to give you a more tangible feeling to actually working on a topic related to sustainabilty. Of course the world is more complex than we could ever represent in should a small format. Thus, we think it will help you to gain some skills in handling such complex topics, widen your horizon and hand over a basic skill set, you can benefit from and further build on.
 
@@ -43,17 +43,17 @@ In case of any further questions, please feel free to contact me: niklasgoettel@
 
 
 
-# Schedule 1 - Python Project
+### Schedule 1 - Data Analysis
 
 09-10am.(CEST): Python Introduction with Niklas 
 
 10:15am.-12:00am (CEST): Case Study with Niklas 
 
-# Schedule 2 
+### Schedule 2 - Strategy Development
 
 09-10am.(CEST) : Reading + Brainstorming
 
-10:15am. - 12:00:(CEST) Pitch Idea and preparing Presentation
+10:15am. - 12:00:(CEST) Pitch Idea and preparing presentation
 
 
 
