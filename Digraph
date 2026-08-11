@@ -1,0 +1,45 @@
+digraph {
+	fillcolor=lightgreen shape=box style="rounded,filled"
+	1 [label="Github Repo"]
+	2 [label="Quarto Project initiation in VSC"]
+	3 [label="touch .gitignore"]
+	4 [label="*.csv...etc"]
+	5 [label="Quarto Render"]
+	6 [label="Git einrichten"]
+	7 [label="git init"]
+	8 [label="git add (specific files possible) ."]
+	9 [label="git commit -m'initial commit'"]
+	10 [label="git remote add origin <repo-url>"]
+	11 [label="git push"]
+	12 [label="if errror" fillcolor=red style=filled]
+	13 [label="check stats: git status"]
+	14 [label="remote remove origin"]
+	15 [label="git rm -r --cached bspw: _site"]
+	16 [label="git branch -M main"]
+	17 [label="git push -u origin main"]
+	18 [label="remove git: rm -rf .git"]
+	1 -> 2
+	2 -> 3
+	3 -> 4
+	4 -> 5
+	5 -> 6
+	6 -> 7
+	7 -> 8
+	8 -> 9
+	9 -> 10
+	10 -> 11
+	11 -> 12
+	12 -> 13
+	13 -> 14
+	14 -> 15
+	15 -> 16
+	16 -> 17
+	17 -> 18
+	18 -> 19
+	14 -> 9
+	13 -> 15
+	17 -> 7
+	17 -> 8
+	18 -> 5
+	18 -> 7
+}

@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Case Study – IOSW project</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4397f41838bf6696a92fdfbed53ac40c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">IOSW project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./python_installation.html"> 
+<span class="menu-text">Install Python</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./Analysis.html">
+ <span class="dropdown-text">Python Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./introduction_python.html">
+ <span class="dropdown-text">Python Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./pandas.html">
+ <span class="dropdown-text">Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Workflow.html">
+ <span class="dropdown-text">Analysis Workflow</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link">
+<span class="menu-text">Data</span>
+    </span>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./general.html"> 
+<span class="menu-text">General Informations</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-templates" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Templates</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-templates">    
+        <li>
+    <a class="dropdown-item" href="./IOSW_Learning_Journal_Template.docx">
+ <span class="dropdown-text">Learning Journal Template</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-files" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Files</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-files">    
+        <li>
+    <a class="dropdown-item" href="./praesi.pptx">
+ <span class="dropdown-text">Kick-off-Presenation</span></a>
+  </li>  
+        <li class="dropdown-header">Keynotes</li>
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <div id="quarto-announcement" data-announcement-id="df0ab67916ee871cea254e255c96e9f4" class="alert alert-warning hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>+++ Deadline for the handover is the 10. Oktober +++</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-loading-initial-exploration" id="toc-data-loading-initial-exploration" class="nav-link active" data-scroll-target="#data-loading-initial-exploration">1. Data Loading &amp; Initial Exploration</a></li>
+  <li><a href="#data-cleaning-preparation" id="toc-data-cleaning-preparation" class="nav-link" data-scroll-target="#data-cleaning-preparation">2. Data Cleaning &amp; Preparation</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">4. Data Visualization</a></li>
+  <li><a href="#advanced-analytics-and-predictive-modeling" id="toc-advanced-analytics-and-predictive-modeling" class="nav-link" data-scroll-target="#advanced-analytics-and-predictive-modeling">5. Advanced Analytics and Predictive Modeling</a></li>
+  <li><a href="#sustainability-recommendations" id="toc-sustainability-recommendations" class="nav-link" data-scroll-target="#sustainability-recommendations">7. Sustainability Recommendations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Case Study</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Greening the Fleet – Data-Driven Sustainability at EcoTrans Logistics Background</p>
+<p>EcoTrans Logistics is a mid-sized European transport company operating a fleet of delivery trucks across urban and regional routes. Facing rising fuel costs, stricter environmental regulations, and customer demand for greener logistics, the company has launched a data-driven initiative to reduce its carbon footprint. You are part of the data analytics team tasked with analyzing operational data and identifying opportunities to improve sustainability while maintaining efficiency. The following tasks correspond to different stages of your Jupyter Notebook analysis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graph.png" class="img-fluid figure-img"></p>
+<figcaption>The typical workflow</figcaption>
+</figure>
+</div>
+<section id="data-loading-initial-exploration" class="level1">
+<h1>1. Data Loading &amp; Initial Exploration</h1>
+<p>(Related to code blocks: importing libraries, loading datasets, displaying head/info)</p>
+<p>EcoTrans has provided datasets containing: Shipping and Aircraft data (fuel type, age, capacity, CO2 output)</p>
+<p>Your Tasks:</p>
+<ol type="1">
+<li>Load the datasets and inspect their structure.</li>
+<li>Identify key variables relevant to sustainability (e.g.&nbsp;what could be relevant for further investigation).</li>
+<li>Check for inconsistencies in data types (e.g., numeric vs.&nbsp;categorical).</li>
+<li>Provide an initial summary of the dataset:</li>
+</ol>
+<ul>
+<li>Size of the dataset</li>
+<li>Number of variables</li>
+<li>columns/variables we might drop (null columns)</li>
+</ul>
+<div id="236c8c72" class="cell" data-execution_count="235">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages loading</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="89d06daa" class="cell" data-execution_count="236">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the data in </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>aviation_data<span class="op">=</span>pd.read_csv(<span class="st">"international-aviation_emissions_sources_v5_5_0.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>shipping_data<span class="op">=</span>pd.read_csv(<span class="st">"international-shipping_emissions_sources_v5_5_0.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0d179477" class="cell" data-execution_count="237">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>aviation_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 135420 entries, 0 to 135419
+Data columns (total 47 columns):
+ #   Column                  Non-Null Count   Dtype  
+---  ------                  --------------   -----  
+ 0   source_id               135420 non-null  int64  
+ 1   source_name             135420 non-null  str    
+ 2   source_type             135420 non-null  str    
+ 3   iso3_country            135420 non-null  str    
+ 4   sector                  135420 non-null  str    
+ 5   subsector               135420 non-null  str    
+ 6   start_time              135420 non-null  str    
+ 7   end_time                135420 non-null  str    
+ 8   lat                     135420 non-null  float64
+ 9   lon                     135420 non-null  float64
+ 10  geometry_ref            0 non-null       float64
+ 11  gas                     135420 non-null  str    
+ 12  emissions_quantity      135420 non-null  float64
+ 13  temporal_granularity    135420 non-null  str    
+ 14  activity                135420 non-null  float64
+ 15  activity_units          135420 non-null  str    
+ 16  emissions_factor        135420 non-null  float64
+ 17  emissions_factor_units  135420 non-null  str    
+ 18  capacity                135420 non-null  int64  
+ 19  capacity_units          135420 non-null  str    
+ 20  capacity_factor         135420 non-null  float64
+ 21  other1                  0 non-null       float64
+ 22  other1_def              0 non-null       float64
+ 23  other2                  0 non-null       float64
+ 24  other2_def              0 non-null       float64
+ 25  other3                  0 non-null       float64
+ 26  other3_def              0 non-null       float64
+ 27  other4                  0 non-null       float64
+ 28  other4_def              0 non-null       float64
+ 29  other5                  0 non-null       float64
+ 30  other5_def              0 non-null       float64
+ 31  other6                  0 non-null       float64
+ 32  other6_def              0 non-null       float64
+ 33  other7                  0 non-null       float64
+ 34  other7_def              0 non-null       float64
+ 35  other8                  0 non-null       float64
+ 36  other8_def              0 non-null       float64
+ 37  other9                  0 non-null       float64
+ 38  other9_def              0 non-null       float64
+ 39  other10                 0 non-null       float64
+ 40  other10_def             0 non-null       float64
+ 41  created_date            135420 non-null  str    
+ 42  modified_date           135420 non-null  str    
+ 43  sector_id               135420 non-null  int64  
+ 44  reporting_entity        135420 non-null  str    
+ 45  lat_lon                 0 non-null       float64
+ 46  native_source_id        135420 non-null  str    
+dtypes: float64(28), int64(3), str(16)
+memory usage: 48.6 MB</code></pre>
+</div>
+</div>
+<div id="a6b42494" class="cell" data-execution_count="238">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aviation_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="238">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">geometry_ref</th>
+<th data-quarto-table-cell-role="th">emissions_quantity</th>
+<th data-quarto-table-cell-role="th">activity</th>
+<th data-quarto-table-cell-role="th">emissions_factor</th>
+<th data-quarto-table-cell-role="th">capacity</th>
+<th data-quarto-table-cell-role="th">capacity_factor</th>
+<th data-quarto-table-cell-role="th">other1</th>
+<th data-quarto-table-cell-role="th">other1_def</th>
+<th data-quarto-table-cell-role="th">other2</th>
+<th data-quarto-table-cell-role="th">other2_def</th>
+<th data-quarto-table-cell-role="th">other3</th>
+<th data-quarto-table-cell-role="th">other3_def</th>
+<th data-quarto-table-cell-role="th">other4</th>
+<th data-quarto-table-cell-role="th">other4_def</th>
+<th data-quarto-table-cell-role="th">other5</th>
+<th data-quarto-table-cell-role="th">other5_def</th>
+<th data-quarto-table-cell-role="th">other6</th>
+<th data-quarto-table-cell-role="th">other6_def</th>
+<th data-quarto-table-cell-role="th">other7</th>
+<th data-quarto-table-cell-role="th">other7_def</th>
+<th data-quarto-table-cell-role="th">other8</th>
+<th data-quarto-table-cell-role="th">other8_def</th>
+<th data-quarto-table-cell-role="th">other9</th>
+<th data-quarto-table-cell-role="th">other9_def</th>
+<th data-quarto-table-cell-role="th">other10</th>
+<th data-quarto-table-cell-role="th">other10_def</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">lat_lon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>0.0</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>135420.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>4.781811e+06</td>
+<td>27.805174</td>
+<td>10.273544</td>
+<td>NaN</td>
+<td>1.777794e+04</td>
+<td>5582.035904</td>
+<td>3.184848e+00</td>
+<td>794.238621</td>
+<td>2.640764</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">std</th>
+<td>8.046154e+06</td>
+<td>23.933280</td>
+<td>75.547543</td>
+<td>NaN</td>
+<td>8.809461e+04</td>
+<td>27660.538505</td>
+<td>1.017911e-14</td>
+<td>2833.385969</td>
+<td>4.662863</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">min</th>
+<td>8.268740e+05</td>
+<td>-54.843300</td>
+<td>-179.667007</td>
+<td>NaN</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>3.166576e+06</td>
+<td>13.898300</td>
+<td>-61.427159</td>
+<td>NaN</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>3.167826e+06</td>
+<td>34.053749</td>
+<td>14.687551</td>
+<td>NaN</td>
+<td>5.674604e+01</td>
+<td>17.817505</td>
+<td>3.184848e+00</td>
+<td>10.000000</td>
+<td>0.938763</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>3.169110e+06</td>
+<td>44.883974</td>
+<td>55.675500</td>
+<td>NaN</td>
+<td>2.638393e+03</td>
+<td>828.420547</td>
+<td>3.184848e+00</td>
+<td>259.000000</td>
+<td>3.535523</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">max</th>
+<td>5.112815e+07</td>
+<td>78.246101</td>
+<td>179.195999</td>
+<td>NaN</td>
+<td>1.868720e+06</td>
+<td>586753.356177</td>
+<td>3.184848e+00</td>
+<td>43471.000000</td>
+<td>78.992528</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>64.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="data-cleaning-preparation" class="level1">
+<h1>2. Data Cleaning &amp; Preparation</h1>
+<p>Before analysis, the dataset must be cleaned.</p>
+<p>Tasks: 1. Identify missing or null values across all columns and drop the columns. 2. Decide how to handle missing data: - Remove rows? - Impute values? 3. Convert the “end_time” variable from a string to a datatime format (try to do this with a function which would work in general for any csv containing that column) 4. Build a function which adds a new column for the year from the respective end_time variable. It will help us to show trend development later on. Also make sure, it is converted into a numeric format.</p>
+<div id="a6b60e3b" class="cell" data-execution_count="239">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning the null columns</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>aviation_data<span class="op">=</span>aviation_data.dropna(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>shipping_data<span class="op">=</span>shipping_data.dropna(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="816aad02" class="cell" data-execution_count="240">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># converting a dataformat</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>csv_list<span class="op">=</span>[aviation_data,shipping_data]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_conversion(data):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"end_time"</span>]<span class="op">=</span>pd.to_datetime(data[<span class="st">"end_time"</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> csv_list:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    data_conversion(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5f3c0a5f" class="cell" data-execution_count="241">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>aviation_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 135420 entries, 0 to 135419
+Data columns (total 25 columns):
+ #   Column                  Non-Null Count   Dtype         
+---  ------                  --------------   -----         
+ 0   source_id               135420 non-null  int64         
+ 1   source_name             135420 non-null  str           
+ 2   source_type             135420 non-null  str           
+ 3   iso3_country            135420 non-null  str           
+ 4   sector                  135420 non-null  str           
+ 5   subsector               135420 non-null  str           
+ 6   start_time              135420 non-null  str           
+ 7   end_time                135420 non-null  datetime64[us]
+ 8   lat                     135420 non-null  float64       
+ 9   lon                     135420 non-null  float64       
+ 10  gas                     135420 non-null  str           
+ 11  emissions_quantity      135420 non-null  float64       
+ 12  temporal_granularity    135420 non-null  str           
+ 13  activity                135420 non-null  float64       
+ 14  activity_units          135420 non-null  str           
+ 15  emissions_factor        135420 non-null  float64       
+ 16  emissions_factor_units  135420 non-null  str           
+ 17  capacity                135420 non-null  int64         
+ 18  capacity_units          135420 non-null  str           
+ 19  capacity_factor         135420 non-null  float64       
+ 20  created_date            135420 non-null  str           
+ 21  modified_date           135420 non-null  str           
+ 22  sector_id               135420 non-null  int64         
+ 23  reporting_entity        135420 non-null  str           
+ 24  native_source_id        135420 non-null  str           
+dtypes: datetime64[us](1), float64(6), int64(3), str(15)
+memory usage: 25.8 MB</code></pre>
+</div>
+</div>
+<div id="600f6d48" class="cell" data-execution_count="242">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function for building a new column year</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> year(data):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"year"</span>]<span class="op">=</span>pd.to_numeric(data[<span class="st">"end_time"</span>].dt.year)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> csv_list:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    year(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Your data are now in a format with which we can start doing the real analysis. As we are primarily interested in identying patterns which help as to maintain and improve our operations in regards to sustainability topics, it might make sense to get a feeling on the emissions data E.g. start to plot the emissions data (emissions_quantity) of the aircraft fleet on a histogramm to get a feeling for the dimensions.</p>
+<div id="13780016" class="cell" data-execution_count="243">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">5</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.hist(aviation_data[<span class="st">"emissions_quantity"</span>],edgecolor<span class="op">=</span><span class="st">"black"</span>,bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Does it make sense to plot these values without some further manipulation? Would you hand over this histogramm you your boss? Any idea to convert your emissions data into a more handy format? It might be useful to convert the data with the logarithm. Define a function for both files which performs a log-transformation on these columns</p>
+<p>Your Task: - Build a function which performs a log-transformation the emissions_quantity data - validate that your function worked (.describe() is a fast way to get some stats) - plot the data again, can you spot a problem? - read the error code and report what the problem might be - try to find a way to solve the problem</p>
+<div id="f98b3542" class="cell" data-execution_count="244">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logarithmic(data):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"emissions_quantity"</span>]<span class="op">=</span>np.log2(data[<span class="st">"emissions_quantity"</span>])</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> csv_list:</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    logarithmic(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: divide by zero encountered in log2
+  result = getattr(ufunc, method)(*inputs, **kwargs)</code></pre>
+</div>
+</div>
+<div id="598a2ccf" class="cell" data-execution_count="245">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aviation_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/numpy/lib/_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/pandas/core/nanops.py:1020: RuntimeWarning: invalid value encountered in subtract
+  sqr = _ensure_numeric((avg - values) ** 2)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="245">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">emissions_quantity</th>
+<th data-quarto-table-cell-role="th">activity</th>
+<th data-quarto-table-cell-role="th">emissions_factor</th>
+<th data-quarto-table-cell-role="th">capacity</th>
+<th data-quarto-table-cell-role="th">capacity_factor</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1.354200e+05</td>
+<td>135420</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>135420.0</td>
+<td>135420.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>4.781811e+06</td>
+<td>2023-07-31 12:59:00.983606</td>
+<td>27.805174</td>
+<td>10.273544</td>
+<td>-inf</td>
+<td>5582.035904</td>
+<td>3.184848e+00</td>
+<td>794.238621</td>
+<td>2.640764</td>
+<td>64.0</td>
+<td>2023.049180</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">min</th>
+<td>8.268740e+05</td>
+<td>2021-01-31 00:00:00</td>
+<td>-54.843300</td>
+<td>-179.667007</td>
+<td>-inf</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2021.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>3.166576e+06</td>
+<td>2022-04-30 00:00:00</td>
+<td>13.898300</td>
+<td>-61.427159</td>
+<td>NaN</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2022.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>3.167826e+06</td>
+<td>2023-07-31 00:00:00</td>
+<td>34.053749</td>
+<td>14.687551</td>
+<td>5.826448e+00</td>
+<td>17.817505</td>
+<td>3.184848e+00</td>
+<td>10.000000</td>
+<td>0.938763</td>
+<td>64.0</td>
+<td>2023.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>3.169110e+06</td>
+<td>2024-10-31 00:00:00</td>
+<td>44.883974</td>
+<td>55.675500</td>
+<td>1.136544e+01</td>
+<td>828.420547</td>
+<td>3.184848e+00</td>
+<td>259.000000</td>
+<td>3.535523</td>
+<td>64.0</td>
+<td>2024.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">max</th>
+<td>5.112815e+07</td>
+<td>2026-01-31 00:00:00</td>
+<td>78.246101</td>
+<td>179.195999</td>
+<td>2.083362e+01</td>
+<td>586753.356177</td>
+<td>3.184848e+00</td>
+<td>43471.000000</td>
+<td>78.992528</td>
+<td>64.0</td>
+<td>2026.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">std</th>
+<td>8.046154e+06</td>
+<td>NaN</td>
+<td>23.933280</td>
+<td>75.547543</td>
+<td>NaN</td>
+<td>27660.538505</td>
+<td>1.017911e-14</td>
+<td>2833.385969</td>
+<td>4.662863</td>
+<td>0.0</td>
+<td>1.453393</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="352f4786" class="cell" data-execution_count="246">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(20,5))</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.hist(aviation_data["emissions_quantity"],edgecolor="black",bins=50)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The log-transformation lead to negative infinite data entries. As it does not make any sense to record negative values, we now want to impute any negative values with exact 0.</p>
+<p>Your Task: - again write a function which returns the datasets just with 0 or positive emissions_quantity data</p>
+<div id="70468948" class="cell" data-execution_count="247">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> zero_cleaning(data):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"emissions_quantity"</span>]<span class="op">=</span>data[<span class="st">"emissions_quantity"</span>].replace(<span class="op">-</span>np.inf,<span class="dv">0</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    data.loc[data[<span class="st">"emissions_quantity"</span>]<span class="op">&lt;</span><span class="dv">0</span>,<span class="st">"emissions_quantity"</span>]<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> csv_list:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    zero_cleaning(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Verify if your function worked by calling .describe() again. Then again, plot your data! It should look nice and smooth now..</p>
+<div id="73c287b6" class="cell" data-execution_count="248">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>aviation_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="248">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">emissions_quantity</th>
+<th data-quarto-table-cell-role="th">activity</th>
+<th data-quarto-table-cell-role="th">emissions_factor</th>
+<th data-quarto-table-cell-role="th">capacity</th>
+<th data-quarto-table-cell-role="th">capacity_factor</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1.354200e+05</td>
+<td>135420</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>135420.0</td>
+<td>135420.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>4.781811e+06</td>
+<td>2023-07-31 12:59:00.983606</td>
+<td>27.805174</td>
+<td>10.273544</td>
+<td>6.011671</td>
+<td>5582.035904</td>
+<td>3.184848e+00</td>
+<td>794.238621</td>
+<td>2.640764</td>
+<td>64.0</td>
+<td>2023.049180</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">min</th>
+<td>8.268740e+05</td>
+<td>2021-01-31 00:00:00</td>
+<td>-54.843300</td>
+<td>-179.667007</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2021.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>3.166576e+06</td>
+<td>2022-04-30 00:00:00</td>
+<td>13.898300</td>
+<td>-61.427159</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2022.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>3.167826e+06</td>
+<td>2023-07-31 00:00:00</td>
+<td>34.053749</td>
+<td>14.687551</td>
+<td>5.826448</td>
+<td>17.817505</td>
+<td>3.184848e+00</td>
+<td>10.000000</td>
+<td>0.938763</td>
+<td>64.0</td>
+<td>2023.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>3.169110e+06</td>
+<td>2024-10-31 00:00:00</td>
+<td>44.883974</td>
+<td>55.675500</td>
+<td>11.365444</td>
+<td>828.420547</td>
+<td>3.184848e+00</td>
+<td>259.000000</td>
+<td>3.535523</td>
+<td>64.0</td>
+<td>2024.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">max</th>
+<td>5.112815e+07</td>
+<td>2026-01-31 00:00:00</td>
+<td>78.246101</td>
+<td>179.195999</td>
+<td>20.833619</td>
+<td>586753.356177</td>
+<td>3.184848e+00</td>
+<td>43471.000000</td>
+<td>78.992528</td>
+<td>64.0</td>
+<td>2026.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">std</th>
+<td>8.046154e+06</td>
+<td>NaN</td>
+<td>23.933280</td>
+<td>75.547543</td>
+<td>6.132846</td>
+<td>27660.538505</td>
+<td>1.017911e-14</td>
+<td>2833.385969</td>
+<td>4.662863</td>
+<td>0.0</td>
+<td>1.453393</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="dfb7206f" class="cell" data-execution_count="249">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">5</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.hist(aviation_data[<span class="st">"emissions_quantity"</span>],edgecolor<span class="op">=</span><span class="st">"black"</span>,bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Aviation Data"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="c4db8d98" class="cell" data-execution_count="250">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">5</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.hist(shipping_data[<span class="st">"emissions_quantity"</span>],edgecolor<span class="op">=</span><span class="st">"black"</span>,bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Shippung Data"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="data-visualization" class="level1">
+<h1>4. Data Visualization</h1>
+<p>As your aircraft data, as well as your shipping data are cleaned and prepared, you are asked to perform a comparison between both transports links. For this, pls plot both data in one figure.The visual insights will help communicate findings to management. Your Tasks:</p>
+<ol type="1">
+<li>Create visualizations (histogram) to show:
+<ul>
+<li>make sure they are in one figure</li>
+<li>add x- and y-label</li>
+<li>add title</li>
+<li>visualize them in a way that both data distributions can be clearly seen</li>
+<li>add the respective label and assign different colors</li>
+</ul></li>
+<li>Which transport links performs better in terms of emissions?</li>
+<li>Plot the relation of emissions_quanitities and the respective capacity of the aircrafts/ships in a scatter plot- can you spot some clusters (also both datasets in one figure )- Tip: reverse your log-transformation first</li>
+<li>Based on your scatter plot, do you identify clusters in the vessel fleet?</li>
+</ol>
+<div id="28dc248d" class="cell" data-execution_count="251">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>labels<span class="op">=</span>[<span class="st">"shipping"</span>,<span class="st">"aviation"</span>]</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data,label <span class="kw">in</span> <span class="bu">zip</span>(csv_list,labels):</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>data[<span class="st">"emissions_quantity"</span>]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    plt.hist(x,edgecolor<span class="op">=</span><span class="st">"black"</span>,density<span class="op">=</span><span class="va">True</span>,alpha<span class="op">=</span><span class="fl">0.5</span>,label<span class="op">=</span>label)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cc2bec48" class="cell" data-execution_count="252">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(data):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"emissions_quantity"</span>]<span class="op">=</span>np.exp(data[<span class="st">"emissions_quantity"</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> csv_list:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    reverse(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5218431e" class="cell" data-execution_count="253">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#scatter plot</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data, label <span class="kw">in</span> <span class="bu">zip</span>(csv_list,labels):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>data[<span class="st">"capacity"</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>data[<span class="st">"emissions_quantity"</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    plt.scatter(x,y,label<span class="op">=</span>label,alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Capacity"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Emissions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="advanced-analytics-and-predictive-modeling" class="level1">
+<h1>5. Advanced Analytics and Predictive Modeling</h1>
+<p>EcoTrans’ head of logisitcs was amazed by your work and the visualization. He is concerned that there might by a real issue with old aircrafts/ships and their respective emissions. He is asking you whether you can calcualte the effect of capacity on the respective emission. Your tasks:</p>
+<ol type="1">
+<li>Train a linear regression model on both datasets each and report the beta-coefficient, as well as the R_sqaured</li>
+</ol>
+<div id="0609689e" class="cell" data-execution_count="254">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train a linear Regression model for the aircraft data</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>aviation_data[[<span class="st">"capacity"</span>]]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>aviation_data[<span class="st">"emissions_quantity"</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>Linear_Aircraft<span class="op">=</span>LinearRegression()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>Linear_Aircraft.fit(x,y)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>beta_coeffcient<span class="op">=</span>Linear_Aircraft.coef_</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The beta coefficient is about </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(Linear_Aircraft.coef_,<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The score/R_squared is about </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(Linear_Aircraft.score(x,y),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">%"</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The beta coefficient is about [10636.22]
+The score/R_squared is about 0.63%</code></pre>
+</div>
+</div>
+<div id="27e5e0d9" class="cell" data-execution_count="255">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train a linear Regression model for the shipping data</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>shipping_data[[<span class="st">"capacity"</span>]]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>shipping_data[<span class="st">"emissions_quantity"</span>]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>Linear_Ships<span class="op">=</span>LinearRegression()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>Linear_Ships.fit(x,y)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>beta_coeffcient<span class="op">=</span>Linear_Ships.coef_</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The beta coefficient is about </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(Linear_Ships.coef_,<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The score/R_squared is about </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(Linear_Ships.score(x,y),<span class="dv">2</span>)<span class="sc">}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The beta coefficient is about [36504.39]
+The score/R_squared is about 0.33%</code></pre>
+</div>
+</div>
+<p>Can you spot the difference it their scores? Why is the linear model for the shipping data performing that bad?</p>
+<p>The next plot is just for you, to see that a straight line from first degree polynomial model is not appropriate</p>
+<div id="dc3ed2c8" class="cell" data-execution_count="256">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sns.regplot(data<span class="op">=</span>shipping_data,x<span class="op">=</span>shipping_data[<span class="st">"capacity"</span>],y<span class="op">=</span>shipping_data[<span class="st">"emissions_quantity"</span>],line_kws<span class="op">=</span>{<span class="st">"color"</span>:<span class="st">"red"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You ask your collegue and he is advising you to try out a polynomial regression. The advantage is that you add some degree of freedom and you might end up with a better score.</p>
+<p>Your task: 1. Build up a polynomial Regression model just for the shipping data with polynomial degree of 3 2. Report the new score, did it improve? 3. Try to visualize the new regression line</p>
+<div id="ebf214d3" class="cell" data-execution_count="257">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># polynomial regression model/</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>poly<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>poly_transfer<span class="op">=</span>PolynomialFeatures(poly)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>x_poly<span class="op">=</span>poly_transfer.fit_transform(x)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Poly_Model<span class="op">=</span>LinearRegression()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>Poly_Model.fit(x_poly,y)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>R_squared<span class="op">=</span>Poly_Model.score(x_poly,y)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The new score is now </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(R_squared,<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The new score is now 0.62</code></pre>
+</div>
+</div>
+<div id="88f90bdc" class="cell" data-execution_count="258">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>y_predict<span class="op">=</span>Poly_Model.predict(x_poly)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y,label<span class="op">=</span><span class="st">"Original Data"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(x,y_predict,label<span class="op">=</span><span class="st">"Poly degree 3"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Capacity"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Emissions"</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Shipping data with preprocessing on polynomial degree of 3"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It looks a bit better but acutally not perfect at all. But you might something else? Remeber, we want to find cluster/patterns. Maybe you see patterns of ships which are not efficient enough?</p>
+<p>As we not just visually identify patterns but also confirm by analytical methods, we implemenet a Kmeans cluster algorithm. But before it is useful to scale the values as we have huge emission values and small capacity values and the Kmeans is distance based.</p>
+<div id="c4079442" class="cell" data-execution_count="259">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># some preprocessing </span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>shipping_data[[<span class="st">"capacity"</span>,<span class="st">"emissions_quantity"</span>]]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>scaler<span class="op">=</span>StandardScaler()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>data_scaled<span class="op">=</span>scaler.fit_transform(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fcc7d2cd" class="cell" data-execution_count="260">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> shipping_data[[<span class="st">"capacity"</span>, <span class="st">"emissions_quantity"</span>]]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Skalieren</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>data_scaled <span class="op">=</span> scaler.fit_transform(data)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># KMeans</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">5</span>, n_init<span class="op">=</span><span class="st">"auto"</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> kmeans.fit_predict(data_scaled)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Zentren zurücktransformieren</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>centers <span class="op">=</span> scaler.inverse_transform(kmeans.cluster_centers_)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>plt.scatter(</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"capacity"</span>],</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"emissions_quantity"</span>],</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    c<span class="op">=</span>labels,</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"viridis"</span>,</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.6</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>plt.scatter(</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    centers[:, <span class="dv">0</span>],</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    centers[:, <span class="dv">1</span>],</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"red"</span>,</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">"."</span>,</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Centroids"</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"capacity"</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"emissions_quantity"</span>)</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"KMeans Clustering"</span>)</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The k-cluster algorithm is an algorithm which requests deterministic specification of the amount of the clusters centers. But how to know how many clusters center to select?</p>
+<p>Rule of thump: Elbow-Rule</p>
+<p>Your Task: - Report the scores of your trained model - Plot them on a line plot - how many clusters you would select? - based on the clusters, which ship type you would recommend to retire?</p>
+<div id="ec15f932" class="cell" data-execution_count="274">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>scores<span class="op">=</span>[]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>):</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init<span class="op">=</span><span class="st">"auto"</span>).fit(data_scaled)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    score<span class="op">=</span>np.<span class="bu">abs</span>(kmeans.score(data_scaled))</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    scores.append(score)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>plt.plot(np.arange(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">1</span>),scores)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Scores of K-cluster-algorithm"</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Cluster Centers"</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="274">
+<pre><code>Text(0.5, 0, 'Cluster Centers')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/cell-28-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It seems to be appropriate to take 5 cluster centers.</p>
+</section>
+<section id="sustainability-recommendations" class="level1">
+<h1>7. Sustainability Recommendations</h1>
+<p>Based on your analysis, provide actionable insights. You have identified that the ships associated with cluster 4 should be retired and leave the fleet. You are asked to provide csv data with the shipping data, extented by a label column, which included information about whether the ship is “ok”, should be “retired” or is “super efficient”. In our situation these categories are associated with the respective clusters.</p>
+<p>Your Tasks:</p>
+<p>Recommend strategies to reduce emissions: Fleet electrification? Route optimization? Identify quick wins vs.&nbsp;long-term investments. Propose KPIs EcoTrans should track going forward. Estimate potential impact: % reduction in emissions Cost savings</p>
+<div id="0105398d" class="cell" data-execution_count="282">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extending the dataframe with the respective labels </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>kmeans<span class="op">=</span>KMeans(n_clusters<span class="op">=</span><span class="dv">5</span>,n_init<span class="op">=</span><span class="st">"auto"</span>).fit(data_scaled)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>shipping_data[<span class="st">"labels"</span>]<span class="op">=</span>kmeans.predict(data_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="282">
+<pre><code>labels
+0    521472
+3      9984
+4       201
+2        61
+1        61
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="6cb2407d" class="cell" data-execution_count="288">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>shipping_data[<span class="st">"category"</span>]<span class="op">=</span><span class="st">"unknown"</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>shipping_data.loc[shipping_data[<span class="st">"labels"</span>]<span class="op">&lt;=</span><span class="dv">2</span>,<span class="st">"category"</span>]<span class="op">=</span><span class="st">"ok"</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>shipping_data.loc[shipping_data[<span class="st">"labels"</span>]<span class="op">==</span><span class="dv">3</span>,<span class="st">"category"</span>]<span class="op">=</span><span class="st">"retire"</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>shipping_data.loc[shipping_data[<span class="st">"labels"</span>]<span class="op">&gt;</span><span class="dv">3</span>,<span class="st">"category"</span>]<span class="op">=</span><span class="st">"super efficient"</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>shipping_data[<span class="st">"category"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="288">
+<pre><code>category
+ok                 521594
+retire               9984
+super efficient       201
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="9756d8b9" class="cell" data-execution_count="289">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Writing it into a csv </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>shipping_report<span class="op">=</span>shipping_data.to_csv(<span class="st">"report.csv"</span>,sep<span class="op">=</span><span class="st">";"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

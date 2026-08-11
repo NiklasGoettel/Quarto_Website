@@ -1,0 +1,12 @@
+digraph {
+	node [color=lightgrey shape=box style=filled]
+	1 [label="Deriving expected duration and VAR of acitvities"]
+	2 [label="Determining Critical Path"]
+	3 [label="Project duration is sum on activity durations on CP"]
+	4 [label="Project variation: sum of VAR on acitivities on CP "]
+	5 [label="Standard deviation (sqaureroot of Variance)"]
+	1 -> 2
+	2 -> 3
+	3 -> 4
+	4 -> 5
+}
