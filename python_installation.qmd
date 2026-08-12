@@ -81,7 +81,7 @@ Python 3.x.x
 1. Open VS Code
 2. Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`)
 3. Search for **Python**
-4. Install the extension by Microsoft
+4. Install the extension Python 
 
 ---
 
