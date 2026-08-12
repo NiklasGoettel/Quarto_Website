@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir:pwd docs
+  output-dir: docs
   resources:
     -"*.csv"
     - international-aviation_emissions_sources_v5_5_0.csv
