@@ -33,6 +33,8 @@ website:
               text: Pandas
             - href: Workflow.qmd
               text: Analysis Workflow
+            - href: case_study.ipynb
+              text: Case Study
    
       - href: data.qmd
         text: Data

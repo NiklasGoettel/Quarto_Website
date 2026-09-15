@@ -159,6 +159,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./Workflow.html">
  <span class="dropdown-text">Analysis Workflow</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./case_study.html">
+ <span class="dropdown-text">Case Study</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -1666,7 +1670,7 @@ Name: Colorado, dtype: int64</code></pre>
 </section>
 <section id="arithmetric-and-data-alignment" class="level3">
 <h3 class="anchored" data-anchor-id="arithmetric-and-data-alignment">2.5 Arithmetric and Data Alignment</h3>
-<p>there are several simple arithemetric methods avaibale for DataFrames and serie like addition, subtratic etc.. yet, indices need to be the same, otherweise a NaN-value will occur</p>
+<p>There are several simple arithemetric methods avaibale for DataFrames and serie like addition, subtracting etc..Yet, indices need to be the same, otherweise a NaN-value will occur</p>
 <div id="ec24d0b6" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>data_1<span class="op">=</span>pd.DataFrame({<span class="st">"cars"</span>:[<span class="st">"Mercedes"</span>,<span class="st">"Honda"</span>,<span class="st">"Toyota"</span>,<span class="st">"Tesla"</span>],<span class="st">"PS"</span>:[<span class="dv">110</span>,<span class="dv">200</span>,<span class="dv">130</span>,<span class="dv">240</span>]})</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>data_2<span class="op">=</span>pd.DataFrame({<span class="st">"car"</span>:[<span class="st">"BMW"</span>,<span class="st">"Honda"</span>,<span class="st">"Toyota"</span>,<span class="st">"Tesla"</span>],<span class="st">"PS"</span>:[<span class="dv">110</span>,<span class="dv">200</span>,<span class="dv">130</span>,<span class="dv">240</span>]})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1719,7 +1723,7 @@ Name: Colorado, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>lots of diferent arithmetic methods are available, e.g.:div,sub..etc</p>
+<p>lots of diferent arithmetic methods are available, e.g.: div,sub..etc</p>
 </section>
 <section id="sorting-of-series-and-dataframes" class="level3">
 <h3 class="anchored" data-anchor-id="sorting-of-series-and-dataframes">2.6 Sorting of Series and DataFrames</h3>
@@ -1880,12 +1884,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>Also note, that the default setting for sort_values(), as well as sort_index() is sorting by ascending order</p>
+<p>Also note, that the default setting for sort_values(), as well as sort_index() is sorting by ascending order.</p>
 </section>
 </section>
 <section id="descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h2>
-<p>Pandas is built to support a lot of statistical methods. Most methods focus on reduction and aggregation of data</p>
+<p>Pandas is built to support a lot of statistical methods. Most methods focus on reduction and aggregation of data.</p>
 <div id="0424c738" class="cell" data-execution_count="84">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initiating a new DataFrame</span></span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1941,7 +1945,7 @@ dtype: float64</code></pre>
 <div id="a631784f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that in case of NaN values in your dataset, sum(skipna=True)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In order to get a fast and comprehensive overview of a dataset, the describe()-function is very useful. It is basically summarizes several differetn stats (note that in case of non-numerical data, obviously not all stats are available )</p>
+<p>In order to get a fast and comprehensive overview of a dataset, the describe()-function is very useful. It is basically summarizes several different stats (note that in case of non-numerical data, obviously not all stats are available)</p>
 <div id="0f8a09a4" class="cell" data-execution_count="86">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>stats_frame.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
@@ -2014,13 +2018,13 @@ dtype: float64</code></pre>
 </div>
 <p>further frequently used methods:</p>
 <p>mean() argmin() argmax() mad() var() std()</p>
-<p>…and much more</p>
+<p>…and much more.</p>
 <section id="other-useful-methods" class="level3">
 <h3 class="anchored" data-anchor-id="other-useful-methods">Other useful methods</h3>
 <p>Sometimes it can be useful to get some information about the number of unique features.</p>
-<div id="3bb99cc9" class="cell" data-execution_count="91">
+<div id="3bb99cc9" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>test<span class="op">=</span>pd.Series([<span class="st">"A-B"</span>,<span class="st">"A-C"</span>,<span class="st">"C-A"</span>,<span class="st">"B-C"</span>,<span class="st">"C-D"</span>,<span class="st">"B-D"</span>,<span class="st">"A-B"</span>,<span class="st">"C-A"</span>])</span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="co">#. the outcome is like a set</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>test.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>&lt;StringArray&gt;
@@ -2028,7 +2032,7 @@ dtype: float64</code></pre>
 Length: 6, dtype: str</code></pre>
 </div>
 </div>
-<p>We can also generate information that tells us something about the distribution of the number of unique values</p>
+<p>We can also generate information that tells us something about the distribution of the number of unique values:</p>
 <div id="75d8e68f" class="cell" data-execution_count="92">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>test.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
