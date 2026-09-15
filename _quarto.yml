@@ -2,16 +2,16 @@ project:
   type: website
   output-dir: docs
   resources:
-    -"*.csv"
-    - international-aviation_emissions_sources_v5_5_0.csv
-    - international-shipping_emissions_sources_v5_5_0.csv
+    - "*.csv"
+    - aviation.csv
+    - shipping.csv
 
 website:
   title: "IOSW project"
   announcement: 
     icon: info-circle
     dismissable: true
-    content: "+++ Deadline for the handover is the 10. Oktober  +++"
+    content: "+++ Deadline for the handover is the 09. October  +++"
     position: below-navbar
     type: warning
   navbar:
@@ -33,30 +33,25 @@ website:
               text: Pandas
             - href: Workflow.qmd
               text: Analysis Workflow
-              
-      - text: Data
+   
+      - href: data.qmd
+        text: Data
+           
+       
      
             
       - href: about.qmd
         text: About
       - href: general.qmd 
         text: General Informations
-      - text: Templates
-        menu:
-            - href: IOSW_Learning_Journal_Template.docx
-              text: Learning Journal Template 
-      - text: Files 
-        menu: 
-            - href: praesi.pptx
-              text: Kick-off-Presenation 
-            - text: Keynotes 
+    
       
       
 
 format:
   html:
     theme:
-      - lux
+      - minty
       - brand
     css: styles.css
     toc: true

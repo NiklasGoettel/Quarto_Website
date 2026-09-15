@@ -1,11 +1,10 @@
-# Schedule 
 
-Example schedules for international students (Mo-Fr):
+### Thursday Schedule
 
-9 a.m. - 16 p.m. UTC +2 (MECT). 
+Thursday, Oct 01, 2026, 09:00 AM-09:45 AM(CEST): Python Introduction with Niklas 
 
-15 p.m. - 22 p.m. UTC +8 (CST). 
+Thursday, Oct 01, 2026, 10:00 AM-11:00 AM (CEST): Pandas Introduction
 
-8 a.m. - 15 p.m. UTC -3 (BRT). 
+### Friday Schedule
 
-![Schedule](Bildschirmfoto 2026-04-28 um 11.59.45.png)
+Friday, Oct 02, 2026, 09:00 AM-11:00 AM (CEST): Data Analysis 
