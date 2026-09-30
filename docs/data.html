@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Data</h1>
 <p>Here you can download the datasets used in this project.</p>
 <p><a href="aviation.csv" class="btn btn-primary" download="aviation.csv">⬇️ Download Aviation data</a></p>
-<p><a href="shipping.csv" class="btn btn-primary" download="shipping.csv">⬇️ Download Shipping data</a></p>
+<p><a href="shipping_small.csv" class="btn btn-primary" download="shipping_small.csv">⬇️ Download Shipping data</a></p>
 <p><a href="about_the_data_v5_11_0.pdf" class="btn btn-primary" download="about_the_data_v5_11_0.pdf">⬇️ Download Information sheet</a></p>
 
 
@@ -248,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/NiklasGoettel\.github\.io\/Quarto_Website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
