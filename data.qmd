@@ -5,3 +5,6 @@ Here you can download the datasets used in this project.
 [⬇️ Download Aviation data](aviation.csv){download="aviation.csv" .btn .btn-primary}
 
 [⬇️ Download Shipping data](shipping.csv){download="shipping.csv" .btn .btn-primary}
+
+
+[⬇️ Download Information sheet](about_the_data_v5_11_0.pdf){download="about_the_data_v5_11_0.pdf" .btn .btn-primary}
