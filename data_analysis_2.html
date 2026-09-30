@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Loading the packages – IOSW project</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4397f41838bf6696a92fdfbed53ac40c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">IOSW project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./python_installation.html"> 
+<span class="menu-text">Install Python</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./introduction_python.html">
+ <span class="dropdown-text">Python Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./pandas.html">
+ <span class="dropdown-text">Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Workflow.html">
+ <span class="dropdown-text">Analysis Workflow</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./case_study.html">
+ <span class="dropdown-text">Case Study</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./data.html"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./general.html"> 
+<span class="menu-text">General Informations</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <div id="quarto-announcement" data-announcement-id="014321ef885ddc3d056b4ff8cfa3a8a1" class="alert alert-warning hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>+++ Deadline for the handover is the 09. October +++</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading-in-the-data" id="toc-reading-in-the-data" class="nav-link active" data-scroll-target="#reading-in-the-data">Reading in the data</a></li>
+  <li><a href="#data-cleaning-and-pre-preperation" id="toc-data-cleaning-and-pre-preperation" class="nav-link" data-scroll-target="#data-cleaning-and-pre-preperation">Data cleaning and pre-preperation</a>
+  <ul class="collapse">
+  <li><a href="#discretization-and-classification" id="toc-discretization-and-classification" class="nav-link" data-scroll-target="#discretization-and-classification">Discretization and Classification</a></li>
+  </ul></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data processing</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Loading the packages</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="1708bc1d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="reading-in-the-data" class="level1">
+<h1>Reading in the data</h1>
+<p>Our data are provided in a csv-format and we can use the read_csv inbuilt pandas function. This function converts our data in a dataframe</p>
+<div id="7e898548" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>aviation_data<span class="op">=</span>pd.read_csv(<span class="st">"aviation.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>shipping_data<span class="op">=</span>pd.read_csv(<span class="st">"shipping_small.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># by default the index is an integer number of range (1,...,n) rows.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also explcitly assign an index with index_col="example"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>There are a lot of options available for the read_csv function. By default this function expects the data to be seperated with comma, however, sometimes you need a different so-called seperator -&gt; read_csv(sep=“;”)</p>
+</section>
+<section id="data-cleaning-and-pre-preperation" class="level1">
+<h1>Data cleaning and pre-preperation</h1>
+<p>First look on our data:</p>
+<div id="ee4181e9" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>aviation_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">source_name</th>
+<th data-quarto-table-cell-role="th">source_type</th>
+<th data-quarto-table-cell-role="th">iso3_country</th>
+<th data-quarto-table-cell-role="th">sector</th>
+<th data-quarto-table-cell-role="th">subsector</th>
+<th data-quarto-table-cell-role="th">start_time</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">other9</th>
+<th data-quarto-table-cell-role="th">other9_def</th>
+<th data-quarto-table-cell-role="th">other10</th>
+<th data-quarto-table-cell-role="th">other10_def</th>
+<th data-quarto-table-cell-role="th">created_date</th>
+<th data-quarto-table-cell-role="th">modified_date</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">reporting_entity</th>
+<th data-quarto-table-cell-role="th">lat_lon</th>
+<th data-quarto-table-cell-role="th">native_source_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-01-01 00:00:00</td>
+<td>2021-01-31 00:00:00</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>NaN</td>
+<td>iata_AUA</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-02-01 00:00:00</td>
+<td>2021-02-28 00:00:00</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>NaN</td>
+<td>iata_AUA</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-03-01 00:00:00</td>
+<td>2021-03-31 00:00:00</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>NaN</td>
+<td>iata_AUA</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-04-01 00:00:00</td>
+<td>2021-04-30 00:00:00</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>NaN</td>
+<td>iata_AUA</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-05-01 00:00:00</td>
+<td>2021-05-31 00:00:00</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>NaN</td>
+<td>iata_AUA</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 47 columns</p>
+</div>
+</div>
+</div>
+<p>As we can see the dataset contains several columns with NaN values. For a comprehensive overview we can use the pandas decribe() function</p>
+<div id="fd7af764" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>aviation_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 135420 entries, 0 to 135419
+Data columns (total 47 columns):
+ #   Column                  Non-Null Count   Dtype  
+---  ------                  --------------   -----  
+ 0   source_id               135420 non-null  int64  
+ 1   source_name             135420 non-null  str    
+ 2   source_type             135420 non-null  str    
+ 3   iso3_country            135420 non-null  str    
+ 4   sector                  135420 non-null  str    
+ 5   subsector               135420 non-null  str    
+ 6   start_time              135420 non-null  str    
+ 7   end_time                135420 non-null  str    
+ 8   lat                     135420 non-null  float64
+ 9   lon                     135420 non-null  float64
+ 10  geometry_ref            0 non-null       float64
+ 11  gas                     135420 non-null  str    
+ 12  emissions_quantity      135420 non-null  float64
+ 13  temporal_granularity    135420 non-null  str    
+ 14  activity                135420 non-null  float64
+ 15  activity_units          135420 non-null  str    
+ 16  emissions_factor        135420 non-null  float64
+ 17  emissions_factor_units  135420 non-null  str    
+ 18  capacity                135420 non-null  int64  
+ 19  capacity_units          135420 non-null  str    
+ 20  capacity_factor         135420 non-null  float64
+ 21  other1                  0 non-null       float64
+ 22  other1_def              0 non-null       float64
+ 23  other2                  0 non-null       float64
+ 24  other2_def              0 non-null       float64
+ 25  other3                  0 non-null       float64
+ 26  other3_def              0 non-null       float64
+ 27  other4                  0 non-null       float64
+ 28  other4_def              0 non-null       float64
+ 29  other5                  0 non-null       float64
+ 30  other5_def              0 non-null       float64
+ 31  other6                  0 non-null       float64
+ 32  other6_def              0 non-null       float64
+ 33  other7                  0 non-null       float64
+ 34  other7_def              0 non-null       float64
+ 35  other8                  0 non-null       float64
+ 36  other8_def              0 non-null       float64
+ 37  other9                  0 non-null       float64
+ 38  other9_def              0 non-null       float64
+ 39  other10                 0 non-null       float64
+ 40  other10_def             0 non-null       float64
+ 41  created_date            135420 non-null  str    
+ 42  modified_date           135420 non-null  str    
+ 43  sector_id               135420 non-null  int64  
+ 44  reporting_entity        135420 non-null  str    
+ 45  lat_lon                 0 non-null       float64
+ 46  native_source_id        135420 non-null  str    
+dtypes: float64(28), int64(3), str(16)
+memory usage: 48.6 MB</code></pre>
+</div>
+</div>
+<p>We can now choose how we deal with the NaN-values. One convenient way is dropna()</p>
+<div id="9b0fb018" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to remove the the whole columns, therefore we add the argument for the respective axis </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>aviation_data_cleaned<span class="op">=</span>aviation_data.dropna(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned<span class="op">=</span>shipping_data.dropna(axis<span class="op">=</span><span class="st">"columns"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note that if you deal with big data you often make use of functions and loops in order create pipelines:</p>
+<div id="e2fbd4cb" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cleaning(dataset):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dataset.dropna(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> duplicate_cleaning(dataset):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dataset.drop_duplicates()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"aviation_data"</span>: aviation_data,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"shipping_data"</span>: shipping_data</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>methods <span class="op">=</span> [cleaning, duplicate_cleaning]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, dataset <span class="kw">in</span> datasets.items():</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> method <span class="kw">in</span> methods:</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        dataset <span class="op">=</span> method(dataset)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    datasets[name] <span class="op">=</span> dataset</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="51f94ee8" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mapping am Ende für die Zuweisung nutzen von Flugzeugen oder Schiffen die nicht mehr genutzt werden sollen </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Next have a look again on the data type of the start and end times. We do want them to be in a datetime format. One way would be as follows:</p>
+<div id="14b3adca" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one way could be:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>aviation_data_cleaned[<span class="st">"start_time"</span>]<span class="op">=</span>pd.to_datetime(aviation_data_cleaned[<span class="st">"start_time"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>However, usually you work with different files and therefore loops and functions are recommended:</p>
+<div id="03cade79" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_conversion(dataset):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    dataset[<span class="st">"start_time"</span>]<span class="op">=</span>pd.to_datetime(dataset[<span class="st">"start_time"</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    dataset[<span class="st">"end_time"</span>]<span class="op">=</span>pd.to_datetime(dataset[<span class="st">"end_time"</span>])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dataset</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>data_list<span class="op">=</span>[aviation_data_cleaned,shipping_data_cleaned]</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> data_list:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    data_conversion(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/pandas/core/indexes/base.py:3641</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3640</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3641</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engine</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">casted_key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   3642</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> err:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:168</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/index.pyx:197</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7668</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7676</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">KeyError</span>: 'start_time'
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 10</span>
+<span class="ansi-green-fg">      7</span> data_list=[aviation_data_cleaned,shipping_data_cleaned]
+<span class="ansi-green-fg">      9</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> data <span style="font-weight:bold;color:rgb(175,0,255)">in</span> data_list:
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">10</span>     <span class="ansi-yellow-bg">data_conversion</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 2</span>, in <span class="ansi-cyan-fg">data_conversion</span><span class="ansi-blue-fg">(dataset)</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">data_conversion</span>(dataset):
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span>     dataset[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">start_time</span><span class="ansi-yellow-fg">"</span>]=pd.to_datetime(<span class="ansi-yellow-bg">dataset</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">start_time</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg">]</span>)
+<span class="ansi-green-fg">      3</span>     dataset[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">end_time</span><span class="ansi-yellow-fg">"</span>]=pd.to_datetime(dataset[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">end_time</span><span class="ansi-yellow-fg">"</span>])
+<span class="ansi-green-fg">      4</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> dataset
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/pandas/core/frame.py:4378</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   4376</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span>.columns.nlevels &gt; <span class="ansi-green-fg">1</span>:
+<span class="ansi-green-fg">   4377</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span>._getitem_multilevel(key)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">4378</span> indexer = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   4379</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_integer(indexer):
+<span class="ansi-green-fg">   4380</span>     indexer = [indexer]
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/pandas/core/indexes/base.py:3648</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-fg">   3643</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> (
+<span class="ansi-green-fg">   3644</span>         <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, abc.Iterable)
+<span class="ansi-green-fg">   3645</span>         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">any</span>(<span style="color:rgb(0,135,0)">isinstance</span>(x, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> casted_key)
+<span class="ansi-green-fg">   3646</span>     ):
+<span class="ansi-green-fg">   3647</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> InvalidIndexError(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">err</span>
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3648</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span>(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">err</span>
+<span class="ansi-green-fg">   3649</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-fg">   3650</span>     <span style="font-style:italic;color:rgb(95,135,135)"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="ansi-green-fg">   3651</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="ansi-green-fg">   3652</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  the TypeError.</span>
+<span class="ansi-green-fg">   3653</span>     <span style="color:rgb(0,135,0)">self</span>._check_indexing_error(key)
+
+<span class="ansi-red-fg">KeyError</span>: 'start_time'</pre>
+</div>
+</div>
+</div>
+<div id="ba51c537" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>aviation_data_cleaned.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 135420 entries, 0 to 135419
+Data columns (total 25 columns):
+ #   Column                  Non-Null Count   Dtype         
+---  ------                  --------------   -----         
+ 0   source_id               135420 non-null  int64         
+ 1   source_name             135420 non-null  str           
+ 2   source_type             135420 non-null  str           
+ 3   iso3_country            135420 non-null  str           
+ 4   sector                  135420 non-null  str           
+ 5   subsector               135420 non-null  str           
+ 6   start_time              135420 non-null  datetime64[us]
+ 7   end_time                135420 non-null  datetime64[us]
+ 8   lat                     135420 non-null  float64       
+ 9   lon                     135420 non-null  float64       
+ 10  gas                     135420 non-null  str           
+ 11  emissions_quantity      135420 non-null  float64       
+ 12  temporal_granularity    135420 non-null  str           
+ 13  activity                135420 non-null  float64       
+ 14  activity_units          135420 non-null  str           
+ 15  emissions_factor        135420 non-null  float64       
+ 16  emissions_factor_units  135420 non-null  str           
+ 17  capacity                135420 non-null  int64         
+ 18  capacity_units          135420 non-null  str           
+ 19  capacity_factor         135420 non-null  float64       
+ 20  created_date            135420 non-null  str           
+ 21  modified_date           135420 non-null  str           
+ 22  sector_id               135420 non-null  int64         
+ 23  reporting_entity        135420 non-null  str           
+ 24  native_source_id        135420 non-null  str           
+dtypes: datetime64[us](2), float64(6), int64(3), str(14)
+memory usage: 25.8 MB</code></pre>
+</div>
+</div>
+<p>lets also create a new column for the start_time year</p>
+<div id="56db8e06" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> date_conversion(data):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"year"</span>]<span class="op">=</span>data[<span class="st">"start_time"</span>].dt.year</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> data_list:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    date_conversion(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>For now the data looks fine, no more NaN values and all everything in the right format. Lets get a first impression of some descriptive stats</p>
+<div id="e955e804" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aviation_data_cleaned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">source_name</th>
+<th data-quarto-table-cell-role="th">source_type</th>
+<th data-quarto-table-cell-role="th">iso3_country</th>
+<th data-quarto-table-cell-role="th">sector</th>
+<th data-quarto-table-cell-role="th">subsector</th>
+<th data-quarto-table-cell-role="th">start_time</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">emissions_factor_units</th>
+<th data-quarto-table-cell-role="th">capacity</th>
+<th data-quarto-table-cell-role="th">capacity_units</th>
+<th data-quarto-table-cell-role="th">capacity_factor</th>
+<th data-quarto-table-cell-role="th">created_date</th>
+<th data-quarto-table-cell-role="th">modified_date</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">reporting_entity</th>
+<th data-quarto-table-cell-role="th">native_source_id</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-01-01</td>
+<td>2021-01-31</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>1590</td>
+<td>flights</td>
+<td>3.808106</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_AUA</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-02-01</td>
+<td>2021-02-28</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>1520</td>
+<td>flights</td>
+<td>3.699440</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_AUA</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-03-01</td>
+<td>2021-03-31</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>1768</td>
+<td>flights</td>
+<td>3.594831</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_AUA</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-04-01</td>
+<td>2021-04-30</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>1682</td>
+<td>flights</td>
+<td>3.925321</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_AUA</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3165649</td>
+<td>Queen Beatrix International Airport</td>
+<td>international</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2021-05-01</td>
+<td>2021-05-31</td>
+<td>12.5014</td>
+<td>-70.015198</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>1725</td>
+<td>flights</td>
+<td>4.061021</td>
+<td>2025-05-05 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_AUA</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">135415</th>
+<td>3169756</td>
+<td>Victoria Falls International Airport</td>
+<td>international</td>
+<td>ZWE</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2025-09-01</td>
+<td>2025-09-30</td>
+<td>-18.0959</td>
+<td>25.839001</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>773</td>
+<td>flights</td>
+<td>1.970598</td>
+<td>2025-11-03 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_VFA</td>
+<td>2025</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">135416</th>
+<td>3169756</td>
+<td>Victoria Falls International Airport</td>
+<td>international</td>
+<td>ZWE</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2025-10-01</td>
+<td>2025-10-31</td>
+<td>-18.0959</td>
+<td>25.839001</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>791</td>
+<td>flights</td>
+<td>2.019090</td>
+<td>2025-11-03 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_VFA</td>
+<td>2025</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">135417</th>
+<td>3169756</td>
+<td>Victoria Falls International Airport</td>
+<td>international</td>
+<td>ZWE</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2025-11-01</td>
+<td>2025-11-30</td>
+<td>-18.0959</td>
+<td>25.839001</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>645</td>
+<td>flights</td>
+<td>2.084272</td>
+<td>2026-01-06 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_VFA</td>
+<td>2025</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">135418</th>
+<td>3169756</td>
+<td>Victoria Falls International Airport</td>
+<td>international</td>
+<td>ZWE</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2025-12-01</td>
+<td>2025-12-31</td>
+<td>-18.0959</td>
+<td>25.839001</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>549</td>
+<td>flights</td>
+<td>2.196215</td>
+<td>2026-02-02 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_VFA</td>
+<td>2025</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">135419</th>
+<td>3169756</td>
+<td>Victoria Falls International Airport</td>
+<td>international</td>
+<td>ZWE</td>
+<td>transportation</td>
+<td>international-aviation</td>
+<td>2026-01-01</td>
+<td>2026-01-31</td>
+<td>-18.0959</td>
+<td>25.839001</td>
+<td>...</td>
+<td>t of CO2e_100yr per t of fuel</td>
+<td>564</td>
+<td>flights</td>
+<td>2.212236</td>
+<td>2026-03-02 00:00:00</td>
+<td>2026-03-06 18:10:58</td>
+<td>64</td>
+<td>climate-trace</td>
+<td>iata_VFA</td>
+<td>2026</td>
+</tr>
+</tbody>
+</table>
+
+<p>135420 rows × 26 columns</p>
+</div>
+</div>
+</div>
+<div id="452b02c5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>aviation_data_cleaned.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">start_time</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">emissions_quantity</th>
+<th data-quarto-table-cell-role="th">activity</th>
+<th data-quarto-table-cell-role="th">emissions_factor</th>
+<th data-quarto-table-cell-role="th">capacity</th>
+<th data-quarto-table-cell-role="th">capacity_factor</th>
+<th data-quarto-table-cell-role="th">sector_id</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1.354200e+05</td>
+<td>135420</td>
+<td>135420</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>1.354200e+05</td>
+<td>135420.000000</td>
+<td>135420.000000</td>
+<td>135420.0</td>
+<td>135420.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>4.781811e+06</td>
+<td>2023-07-02 02:21:38.360655</td>
+<td>2023-07-31 12:59:00.983606</td>
+<td>27.805174</td>
+<td>10.273544</td>
+<td>1.777794e+04</td>
+<td>5582.035904</td>
+<td>3.184848e+00</td>
+<td>794.238621</td>
+<td>2.640764</td>
+<td>64.0</td>
+<td>2023.049180</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">min</th>
+<td>8.268740e+05</td>
+<td>2021-01-01 00:00:00</td>
+<td>2021-01-31 00:00:00</td>
+<td>-54.843300</td>
+<td>-179.667007</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2021.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>3.166576e+06</td>
+<td>2022-04-01 00:00:00</td>
+<td>2022-04-30 00:00:00</td>
+<td>13.898300</td>
+<td>-61.427159</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>3.184848e+00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>64.0</td>
+<td>2022.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>3.167826e+06</td>
+<td>2023-07-01 00:00:00</td>
+<td>2023-07-31 00:00:00</td>
+<td>34.053749</td>
+<td>14.687551</td>
+<td>5.674604e+01</td>
+<td>17.817505</td>
+<td>3.184848e+00</td>
+<td>10.000000</td>
+<td>0.938763</td>
+<td>64.0</td>
+<td>2023.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>3.169110e+06</td>
+<td>2024-10-01 00:00:00</td>
+<td>2024-10-31 00:00:00</td>
+<td>44.883974</td>
+<td>55.675500</td>
+<td>2.638393e+03</td>
+<td>828.420547</td>
+<td>3.184848e+00</td>
+<td>259.000000</td>
+<td>3.535523</td>
+<td>64.0</td>
+<td>2024.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">max</th>
+<td>5.112815e+07</td>
+<td>2026-01-01 00:00:00</td>
+<td>2026-01-31 00:00:00</td>
+<td>78.246101</td>
+<td>179.195999</td>
+<td>1.868720e+06</td>
+<td>586753.356177</td>
+<td>3.184848e+00</td>
+<td>43471.000000</td>
+<td>78.992528</td>
+<td>64.0</td>
+<td>2026.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">std</th>
+<td>8.046154e+06</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>23.933280</td>
+<td>75.547543</td>
+<td>8.809461e+04</td>
+<td>27660.538505</td>
+<td>1.017911e-14</td>
+<td>2833.385969</td>
+<td>4.662863</td>
+<td>0.0</td>
+<td>1.453393</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>we are interested in the capacities and emission quantities in regrads to their geographical positions. Lets plot them… this will usually give you a certain feeling on the data</p>
+<div id="217e474f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> data <span class="kw">in</span> data_list:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    data.plot(<span class="st">"emissions_quantity"</span>,<span class="st">"capacity"</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>),kind<span class="op">=</span><span class="st">"scatter"</span>,c<span class="op">=</span><span class="st">"lat"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_2_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_2_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>on first impressions we see in general a tendency that indicates growing emissions with more capacity. However, the shipping data might imply some clusters with very high emissions apart from midsize capacity.</p>
+<div id="1a7c00e2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 531779 entries, 0 to 531778
+Data columns (total 28 columns):
+ #   Column                  Non-Null Count   Dtype         
+---  ------                  --------------   -----         
+ 0   source_id               531779 non-null  int64         
+ 1   source_name             531779 non-null  str           
+ 2   iso3_country            531779 non-null  str           
+ 3   sector                  531779 non-null  str           
+ 4   subsector               531779 non-null  str           
+ 5   start_time              531779 non-null  datetime64[us]
+ 6   end_time                531779 non-null  datetime64[us]
+ 7   lat                     531779 non-null  float64       
+ 8   lon                     531779 non-null  float64       
+ 9   gas                     531779 non-null  str           
+ 10  emissions_quantity      531779 non-null  float64       
+ 11  temporal_granularity    531779 non-null  str           
+ 12  activity                531779 non-null  float64       
+ 13  activity_units          531779 non-null  str           
+ 14  emissions_factor        531779 non-null  float64       
+ 15  emissions_factor_units  531779 non-null  str           
+ 16  capacity                531779 non-null  float64       
+ 17  capacity_units          531779 non-null  str           
+ 18  capacity_factor         531779 non-null  float64       
+ 19  other1                  531779 non-null  str           
+ 20  other1_def              531779 non-null  str           
+ 21  other2_def              531779 non-null  str           
+ 22  other10_def             531779 non-null  str           
+ 23  created_date            531779 non-null  str           
+ 24  modified_date           531779 non-null  str           
+ 25  reporting_entity        531779 non-null  str           
+ 26  native_source_id        531779 non-null  str           
+ 27  year                    531779 non-null  int32         
+dtypes: datetime64[us](2), float64(7), int32(1), int64(1), str(17)
+memory usage: 111.6 MB</code></pre>
+</div>
+</div>
+<div id="962e5341" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned[<span class="st">"other1"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>other1
+Norwegian Exclusive Economic Zone                                       39348
+Chinese Exclusive Economic Zone                                         39307
+United States Exclusive Economic Zone                                   35662
+Indonesian Exclusive Economic Zone                                      28362
+Japanese Exclusive Economic Zone                                        21962
+                                                                        ...  
+Australian Exclusive Economic Zone (Macquarie Island)                       1
+Chilean Exclusive Economic Zone (San Felix and San Ambrosio islands)        1
+Joint regime area Colombia / Dominican Republic                             1
+Overlapping claim Glorioso Islands: France / Madagascar                     1
+Palmyra Atoll Exclusive Economic Zone                                       1
+Name: count, Length: 243, dtype: int64</code></pre>
+</div>
+</div>
+<section id="discretization-and-classification" class="level2">
+<h2 class="anchored" data-anchor-id="discretization-and-classification">Discretization and Classification</h2>
+<p>In order to analyse the shipping data cluster more in detail, we first discretize them into latitute groups and assign them names</p>
+<div id="f8aa3c45" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="op">-</span><span class="dv">90</span>, <span class="op">-</span><span class="dv">60</span>, <span class="op">-</span><span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">90</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned[<span class="st">"bin_cat"</span>]<span class="op">=</span>pd.cut(shipping_data_cleaned[<span class="st">"lat"</span>],bins,labels<span class="op">=</span>[</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Polar South"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Temperate South"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Tropical South"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Tropical North"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Temperate North"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Polar North"</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">source_id</th>
+<th data-quarto-table-cell-role="th">source_name</th>
+<th data-quarto-table-cell-role="th">iso3_country</th>
+<th data-quarto-table-cell-role="th">sector</th>
+<th data-quarto-table-cell-role="th">subsector</th>
+<th data-quarto-table-cell-role="th">start_time</th>
+<th data-quarto-table-cell-role="th">end_time</th>
+<th data-quarto-table-cell-role="th">lat</th>
+<th data-quarto-table-cell-role="th">lon</th>
+<th data-quarto-table-cell-role="th">gas</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">other1</th>
+<th data-quarto-table-cell-role="th">other1_def</th>
+<th data-quarto-table-cell-role="th">other2_def</th>
+<th data-quarto-table-cell-role="th">other10_def</th>
+<th data-quarto-table-cell-role="th">created_date</th>
+<th data-quarto-table-cell-role="th">modified_date</th>
+<th data-quarto-table-cell-role="th">reporting_entity</th>
+<th data-quarto-table-cell-role="th">native_source_id</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">bin_cat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2787590</td>
+<td>Oranjestad</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2021-01-01</td>
+<td>2021-01-31</td>
+<td>12.500898</td>
+<td>-70.019501</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Aruban Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2024-08-20 00:00:00</td>
+<td>2026-03-06 01:54:05</td>
+<td>climate-trace</td>
+<td>ABW_2710736128</td>
+<td>2021</td>
+<td>Tropical North</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2787590</td>
+<td>Oranjestad</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2021-02-01</td>
+<td>2021-02-28</td>
+<td>12.500898</td>
+<td>-70.019501</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Aruban Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2024-08-20 00:00:00</td>
+<td>2026-03-06 01:54:05</td>
+<td>climate-trace</td>
+<td>ABW_2710736128</td>
+<td>2021</td>
+<td>Tropical North</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2787590</td>
+<td>Oranjestad</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2021-03-01</td>
+<td>2021-03-31</td>
+<td>12.500898</td>
+<td>-70.019501</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Aruban Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2024-08-20 00:00:00</td>
+<td>2026-03-06 01:54:05</td>
+<td>climate-trace</td>
+<td>ABW_2710736128</td>
+<td>2021</td>
+<td>Tropical North</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2787590</td>
+<td>Oranjestad</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2021-04-01</td>
+<td>2021-04-30</td>
+<td>12.500898</td>
+<td>-70.019501</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Aruban Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2024-08-20 00:00:00</td>
+<td>2026-03-06 01:54:05</td>
+<td>climate-trace</td>
+<td>ABW_2710736128</td>
+<td>2021</td>
+<td>Tropical North</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2787590</td>
+<td>Oranjestad</td>
+<td>ABW</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2021-05-01</td>
+<td>2021-05-31</td>
+<td>12.500898</td>
+<td>-70.019501</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Aruban Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2024-08-20 00:00:00</td>
+<td>2026-03-06 01:54:05</td>
+<td>climate-trace</td>
+<td>ABW_2710736128</td>
+<td>2021</td>
+<td>Tropical North</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">531774</th>
+<td>2855359</td>
+<td>Xeros</td>
+<td>ZNC</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2025-09-01</td>
+<td>2025-09-30</td>
+<td>35.133293</td>
+<td>32.833294</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Cypriote Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2025-10-17 00:00:00</td>
+<td>2026-03-09 04:29:10.953708</td>
+<td>climate-trace</td>
+<td>CYP_2391255381</td>
+<td>2025</td>
+<td>Temperate North</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">531775</th>
+<td>2855359</td>
+<td>Xeros</td>
+<td>ZNC</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2025-10-01</td>
+<td>2025-10-31</td>
+<td>35.133293</td>
+<td>32.833294</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Cypriote Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2025-11-17 00:00:00</td>
+<td>2026-03-09 04:29:10.953708</td>
+<td>climate-trace</td>
+<td>CYP_2391255381</td>
+<td>2025</td>
+<td>Temperate North</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">531776</th>
+<td>2855359</td>
+<td>Xeros</td>
+<td>ZNC</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2025-11-01</td>
+<td>2025-11-30</td>
+<td>35.133293</td>
+<td>32.833294</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Cypriote Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2025-12-12 00:00:00</td>
+<td>2026-03-09 04:29:10.953708</td>
+<td>climate-trace</td>
+<td>CYP_2391255381</td>
+<td>2025</td>
+<td>Temperate North</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">531777</th>
+<td>2855359</td>
+<td>Xeros</td>
+<td>ZNC</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2025-12-01</td>
+<td>2025-12-31</td>
+<td>35.133293</td>
+<td>32.833294</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Cypriote Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2026-01-13 00:00:00</td>
+<td>2026-03-09 04:29:10.953708</td>
+<td>climate-trace</td>
+<td>CYP_2391255381</td>
+<td>2025</td>
+<td>Temperate North</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">531778</th>
+<td>2855359</td>
+<td>Xeros</td>
+<td>ZNC</td>
+<td>transportation</td>
+<td>international-shipping</td>
+<td>2026-01-01</td>
+<td>2026-01-31</td>
+<td>35.133293</td>
+<td>32.833294</td>
+<td>co2e_100yr</td>
+<td>...</td>
+<td>Cypriote Exclusive Economic Zone</td>
+<td>economic_zone</td>
+<td>CO2_emissions_factor</td>
+<td>ship dead weight</td>
+<td>2025-02-21 00:00:00</td>
+<td>2026-03-09 04:29:10.953708</td>
+<td>climate-trace</td>
+<td>CYP_2391255381</td>
+<td>2026</td>
+<td>Temperate North</td>
+</tr>
+</tbody>
+</table>
+
+<p>531779 rows × 29 columns</p>
+</div>
+</div>
+</div>
+<p>in the data we have a column called: other1. It contains information on the respective economic zones. We will rename the column and then analyse which ecnomic zone outliers here in terms of emissions</p>
+<div id="effeda5c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>shipping_data_cleaned<span class="op">=</span>shipping_data_cleaned.rename(columns<span class="op">=</span>{<span class="st">"other1"</span>:<span class="st">"economic_zone"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The data are cleaned and pre-procecced. We can now continue to further process them in order to get some value in terms of useful informations out of them</p>
+</section>
+</section>
+<section id="data-processing" class="level1">
+<h1>Data processing</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/NiklasGoettel\.github\.io\/Quarto_Website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
