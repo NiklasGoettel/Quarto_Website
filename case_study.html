@@ -216,23 +216,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Background:</p>
-<p>EcoTrans Logistics is a mid-sized European transport company operating a fleet of delivery trucks across urban and regional routes. Facing rising fuel costs, stricter environmental regulations, and customer demand for greener logistics, the company has launched a data-driven initiative to reduce its carbon footprint. You are part of the data analytics team tasked with analyzing operational data and identifying opportunities to improve sustainability while maintaining efficiency. The following tasks correspond to different stages of your Jupyter Notebook analysis.</p>
+<p>EcoTrans Logistics is a mid-sized European transport company operating a fleet of ships and aicrafts across continental and regional routes. Facing rising fuel costs, stricter environmental regulations, and customer demand for greener logistics, the company has launched a data-driven initiative to reduce its carbon footprint. You are part of the data analytics team tasked with analyzing operational data and identifying opportunities to improve sustainability while maintaining efficiency. You are requested to do the following tasks:</p>
 <section id="tasks" class="level3">
 <h3 class="anchored" data-anchor-id="tasks">Tasks</h3>
 <ol type="1">
-<li>Load the data in (Data)</li>
+<li>Load the data in (downloads)</li>
 <li>Get a first overview on the data (what is the content, descriptive stats,..)</li>
 <li>Clean the data (delete NaN rows and/or columns and other errors,..)</li>
 <li>Handle missing data (e.g.&nbsp;inserting,.. )</li>
-<li>Plot interesting relationships</li>
+<li>Plot interesting relationships (with matplotlib)</li>
 <li>Apply at least one machine learning algorithms using sklearn (e.g.&nbsp;Linear Regression)</li>
+<li>Generate a report (PPT, Slides, Whiteboard)</li>
 </ol>
 <p>You may start with the following:</p>
-<div id="08f586a4" class="cell" data-execution_count="2">
+<div id="08f586a4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> numpy</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data_aviation<span class="op">=</span>pd.read_csv(<span class="st">"aviation.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data_aviation<span class="op">=</span>pd.read_csv(<span class="st">"aviation.csv"</span>)<span class="co"># results in a DataFrame</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_shipping<span class="op">=</span>pd.read_csv(<span class="st">"shipping_small.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Also make sure you put everything in the same folder (jupyter notebook, csv-data). In Visual Studion Code should see then all your files on the left bar (explorer)</p>
 
