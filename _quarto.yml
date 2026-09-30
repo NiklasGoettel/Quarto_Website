@@ -4,7 +4,7 @@ project:
   resources:
     - "*.csv"
     - aviation.csv
-    - shipping.csv
+    - shipping_small.csv
 
 website:
   title: "IOSW project"
